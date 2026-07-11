@@ -27,67 +27,6 @@ Social and healthcare organizations are legally mandated to monitor system logs 
 
 LogGuardian AI operates as an independent backend analysis service running on log servers, meaning it does not directly modify or slow down the live patient information system. The direct users are Data Protection Officers (DPOs) who receive filtered, high-priority alerts on a dedicated security dashboard whenever an anomaly is detected.
 
-The Mermaid diagram below visualizes the exact data components analyzed by the AI from each log event to determine legitimacy:
-
-```mermaid
-graph TD
-    Main["LOG ENTRY DATA CONTENT<br>(Lokimerkinnän tietosisältö)"] --> Cat1
-    Main --> Cat2
-    Main --> Cat3
-    Main --> Cat4
-    Main --> Cat5
-    Main --> Cat6
-
-    Cat1["1. Log Event Data"]
-    Cat1 --> Sub1_1["• User Action / CRUD operation"]
-    Cat1 --> Sub1_2["• Event ID & Technical details"]
-
-    Cat2["2. Accessing System Data"]
-    Cat2 --> Sub2_1["• Software Name & Version"]
-    Cat2 --> Sub2_2["• Device / Workstation ID"]
-
-    Cat3["3. Data Processor Credentials"]
-    Cat3 --> Sub3_1["• Professional Name & ID"]
-    Cat3 --> Sub3_2["• Job Title / Professional Role"]
-
-    Cat4["4. Patient / Client Identity"]
-    Cat4 --> Sub4_1["• Patient Full Name"]
-    Cat4 --> Sub4_2["• Personal Identity Code / ID"]
-
-    Cat5["5. Access Context Metadata"]
-    Cat5 --> Sub5_1["• Purpose of Use / Medical intent"]
-    Cat5 --> Sub5_2["• Care Relationship Verification"]
-    Cat5 --> Sub5_3["• Emergency Justification"]
-
-    Cat6["6. Accessed Data Component"]
-    Cat6 --> Sub6_1["• Registry / Document Type / View"]
-    Cat6 --> Sub6_2["• Unique Document Identifier"]
-    Cat6 --> Sub6_3["• Timeframe of accessed data"]
-    Cat6 --> Sub6_4["• Administrative Data Flag"]
-
-    style Main fill:#ffccff,stroke:#333,stroke-width:2px;
-    style Cat1 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat2 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat3 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat4 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat5 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat6 fill:#ddecff,stroke:#333,stroke-width:1px;
-```
-
-A simplified conceptual example of the backend anomaly filtering logic:
-
-```python
-def check_log_anomaly(log_event):
-    # Check if the user has an active shift and a registered appointment with the patient
-    if not log_event['has_active_shift']:
-        return "HIGH RISK: Access outside working hours"
-    
-    if not log_event['has_active_appointment'] and not log_event['emergency_override']:
-        return "MEDIUM RISK: No established care relationship detected"
-        
-    return "LOW RISK: Standard workflow"
-```
-
 
 ## Data sources and AI methods
 
