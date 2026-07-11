@@ -14,6 +14,8 @@ The idea is part of the Building AI course project.
 
 The idea is part of the Building AI course project.
 
+<img width="321" height="491" alt="logevents" src="https://github.com/user-attachments/assets/9df5b192-1ab0-445f-a4e9-3eb334e58932" />
+
 ---
 
 ## 🔍 Background
