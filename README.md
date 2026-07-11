@@ -6,9 +6,13 @@ Copy the template, paste it to your GitHub README and edit! -->
 
 Final project for the Building AI course
 
+<img width="300" height="300" alt="aidatasecurity" src="https://github.com/user-attachments/assets/1b3d66d2-bf6f-46a1-8b83-4da3c30833b9" />
+
 ## Summary
 
 LogGuardian AI is an automated anomaly detection system designed to monitor massive streams of healthcare log data in real-time. By utilizing machine learning, it identifies unauthorized record access and "curiosity snooping" by internal staff without an active care relationship. The system flags high-risk incidents automatically, protecting sensitive patient privacy while fulfilling legal auditing mandates efficiently.
+
+<img width="321" height="491" alt="logevents" src="https://github.com/user-attachments/assets/9df5b192-1ab0-445f-a4e9-3eb334e58932" />
 
 
 ## Background
