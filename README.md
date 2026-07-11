@@ -27,6 +27,7 @@ This is a widespread and highly publicized issue. News reports frequently expose
 ### Personal Motivation
 The primary motivation behind this project is to protect patient privacy and safeguard fundamental digital rights. By automating a critical compliance requirement, this solution alleviates the immense manual audit workload currently exhausting healthcare security teams, while drastically increasing the detection rate of unethical behavior.
 
+mermaid
 graph TD
     %% Main Node
     Main[<b>Log Entry Data Content</b><br><i>Lokimerkinnän tietosisältö</i>] --> Cat1
