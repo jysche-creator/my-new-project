@@ -27,59 +27,6 @@ This is a widespread and highly publicized issue. News reports frequently expose
 ### Personal Motivation
 The primary motivation behind this project is to protect patient privacy and safeguard fundamental digital rights. By automating a critical compliance requirement, this solution alleviates the immense manual audit workload currently exhausting healthcare security teams, while drastically increasing the detection rate of unethical behavior.
 
-mermaid
-graph TD
-    %% Main Node
-    Main[<b>Log Entry Data Content</b><br><i>Lokimerkinnän tietosisältö</i>] --> Cat1
-    Main --> Cat2
-    Main --> Cat3
-    Main --> Cat4
-    Main --> Cat5
-    Main --> Cat6
-
-    %% Category 1
-    Cat1[<b>1. Log Event Data</b><br><i>Lokitapahtuman tiedot</i>]
-    Cat1 --> Sub1_1[• User Action / CRUD operation<br><i>Käyttäjätoiminto</i>]
-    Cat1 --> Sub1_2[• Event ID & Technical details<br><i>Tapahtuman tiedot</i>]
-
-    %% Category 2
-    Cat2[<b>2. Accessing System Data</b><br><i>Käyttävän järjestelmän tiedot</i>]
-    Cat2 --> Sub2_1[• Software/System Name & Version<br><i>Käytetyn ohjelmiston nimi</i>]
-    Cat2 --> Sub2_2[• Device ID / Workstation identifiers<br><i>Työasema- tai laitetunnisteet</i>]
-
-    %% Category 3
-    Cat3[<b>3. Data Processor Credentials</b><br><i>Tiedonkäsittelijän tunnistetiedot</i>]
-    Cat3 --> Sub3_1[• Professional Name & ID<br><i>Käsittelijän nimi ja tunnukset</i>]
-    Cat3 --> Sub3_2[• Job Title / Professional Role<br><i>Ammattinimike tai rooli</i>]
-
-    %% Category 4
-    Cat4[<b>4. Patient / Client Identity</b><br><i>Asiakkaan tunnistetiedot</i>]
-    Cat4 --> Sub4_1[• Patient Full Name<br><i>Asiakkaan etu- ja sukunimi</i>]
-    Cat4 --> Sub4_2[• Personal Identity Code / ID<br><i>Henkilötunnus tai yksilöivä ID</i>]
-
-    %% Category 5
-    Cat5[<b>5. Access Context Metadata</b><br><i>Käyttökontekstin tiedot</i>]
-    Cat5 --> Sub5_1[• Purpose of Use / Medical intent<br><i>Tietojen käyttötarkoitus</i>]
-    Cat5 --> Sub5_2[• Verification of Care Relationship<br><i>Todennettu asiayhteys tai hoitosuhde</i>]
-    Cat5 --> Sub5_3[• Emergency / Exception Justification<br><i>Katselun erityinen syy selitteineen</i>]
-
-    %% Category 6
-    Cat6[<b>6. Accessed Data Component</b><br><i>Käsiteltyä tietokokonaisuutta kuvaavat tiedot</i>]
-    Cat6 --> Sub6_1[• Registry / Document Type / UI View<br><i>Rekisteritieto, asiakirjatyyppi tai näkymä</i>]
-    Cat6 --> Sub6_2[• Unique Document/Data Identifier<br><i>Käsitellyn tiedon tunniste</i>]
-    Cat6 --> Sub6_3[• Timeframe of the accessed medical data<br><i>Katseltujen tietojen aikajakso</i>]
-    Cat6 --> Sub6_4[• Administrative Data Flag<br><i>Tieto hallinnollisten tietojen käsittelystä</i>]
-
-    %% Styling
-    style Main fill:#f9f,stroke:#333,stroke-width:2px;
-    style Cat1 fill:#bbf,stroke:#333,stroke-width:1px;
-    style Cat2 fill:#bbf,stroke:#333,stroke-width:1px;
-    style Cat3 fill:#bbf,stroke:#333,stroke-width:1px;
-    style Cat4 fill:#bbf,stroke:#333,stroke-width:1px;
-    style Cat5 fill:#bbf,stroke:#333,stroke-width:1px;
-    style Cat6 fill:#bbf,stroke:#333,stroke-width:1px;
-
-
 ---
 
 ## 🛠️ Data and AI Techniques
