@@ -14,57 +14,6 @@ The idea is part of the Building AI course project.
 
 The idea is part of the Building AI course project.
 
-mermaidgraph TD
-    %% Main Node
-    Main["LOG ENTRY DATA CONTENT<br>(Lokimerkinnän tietosisältö)"] --> Cat1
-    Main --> Cat2
-    Main --> Cat3
-    Main --> Cat4
-    Main --> Cat5
-    Main --> Cat6
-
-    %% Category 1
-    Cat1["1. Log Event Data<br>(Lokitapahtuman tiedot)"]
-    Cat1 --> Sub1_1["• User Action / CRUD operation<br>(Käyttäjätoiminto)"]
-    Cat1 --> Sub1_2["• Event ID & Technical details<br>(Tapahtuman tiedot)"]
-
-    %% Category 2
-    Cat2["2. Accessing System Data<br>(Käyttävän järjestelmän tiedot)"]
-    Cat2 --> Sub2_1["• Software Name & Version<br>(Käytetyn ohjelmiston nimi)"]
-    Cat2 --> Sub2_2["• Device / Workstation ID<br>(Työasema- tai laitetunnisteet)"]
-
-    %% Category 3
-    Cat3["3. Data Processor Credentials<br>(Tiedonkäsittelijän tunnistetiedot)"]
-    Cat3 --> Sub3_1["• Professional Name & ID<br>(Käsittelijän nimi ja tunnukset)"]
-    Cat3 --> Sub3_2["• Job Title / Professional Role<br>(Ammattinimike tai rooli)"]
-
-    %% Category 4
-    Cat4["4. Patient / Client Identity<br>(Asiakkaan tunnistetiedot)"]
-    Cat4 --> Sub4_1["• Patient Full Name<br>(Asiakkaan etu- ja sukunimi)"]
-    Cat4 --> Sub4_2["• Personal Identity Code / ID<br>(Henkilötunnus tai yksilöivä ID)"]
-
-    %% Category 5
-    Cat5["5. Access Context Metadata<br>(Käyttökontekstin tiedot)"]
-    Cat5 --> Sub5_1["• Purpose of Use / Medical intent<br>(Tietojen käyttötarkoitus)"]
-    Cat5 --> Sub5_2["• Care Relationship Verification<br>(Todennettu asiayhteys / hoitosuhde)"]
-    Cat5 --> Sub5_3["• Emergency / Exception Justification<br>(Katselun erityinen syy selitteineen)"]
-
-    %% Category 6
-    Cat6["6. Accessed Data Component<br>(Käsiteltyä tietokokonaisuutta kuvaavat tiedot)"]
-    Cat6 --> Sub6_1["• Registry / Document Type / View<br>(Rekisteri, asiakirjatyyppi tai näkymä)"]
-    Cat6 --> Sub6_2["• Unique Document Identifier<br>(Käsitellyn tiedon tunniste)"]
-    Cat6 --> Sub6_3["• Timeframe of accessed medical data<br>(Katseltujen tietojen aikajakso)"]
-    Cat6 --> Sub6_4["• Administrative Data Flag<br>(Tieto hallinnollisten tietojen käsittelystä)"]
-
-    %% Styling
-    style Main fill:#ffccff,stroke:#333,stroke-width:2px;
-    style Cat1 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat2 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat3 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat4 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat5 fill:#ddecff,stroke:#333,stroke-width:1px;
-    style Cat6 fill:#ddecff,stroke:#333,stroke-width:1px;
-
 ---
 
 ## 🔍 Background
