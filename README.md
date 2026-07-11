@@ -10,6 +10,8 @@ The idea is part of the Building AI course project.
 
 **SoteLogGuardian AI** solves this by utilizing unsupervised machine learning to analyze the massive stream of log data in real-time. It automatically detects anomalous access patterns and flags high-risk incidents for Data Protection Officers (DPOs) to investigate.
 
+The idea is part of the Building AI course project.
+
 ---
 
 ## 🔍 Background
