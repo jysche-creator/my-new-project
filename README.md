@@ -1,6 +1,4 @@
-# Project title
-
-SoteLogGuardian AI - Building AI course project
+# SoteLogGuardian AI - Building AI course project
 
 An AI-powered anomaly detection system designed to analyze patient information system logs, identifying unauthorized access and protecting patient privacy in healthcare and social care organizations.
 The idea is part of the Building AI course project.
