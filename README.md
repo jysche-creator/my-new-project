@@ -1,77 +1,117 @@
-# Project SoteLogGuardian AI - Building AI course project
+<!-- This is the markdown template for the final project of the Building AI course, 
+created by Reaktor Innovations and University of Helsinki. 
+Copy the template, paste it to your GitHub README and edit! -->
 
-An AI-powered anomaly detection system designed to analyze patient information system logs, identifying unauthorized access and protecting patient privacy in healthcare and social care organizations.
-The idea is part of the Building AI course project.
+# LogGuardian AI
 
-<img width="300" height="300" alt="aidatasecurity" src="https://github.com/user-attachments/assets/1b3d66d2-bf6f-46a1-8b83-4da3c30833b9" />
+Final project for the Building AI course
 
-## Summary 
+## Summary
 
-Healthcare and social welfare organizations are legally mandated to monitor system logs to ensure data privacy. However, patient information systems generate thousands of log rows every single second. Human auditors cannot process this massive volume of data, leaving organizations reliant on inefficient random sampling. As a result, illegal "curiosity lookups" (e.g., healthcare staff accessing records of individuals without an active care relationship) frequently go unnoticed.
-The idea is part of the Building AI course project.
+LogGuardian AI is an automated anomaly detection system designed to monitor massive streams of healthcare log data in real-time. By utilizing machine learning, it identifies unauthorized record access and "curiosity snooping" by internal staff without an active care relationship. The system flags high-risk incidents automatically, protecting sensitive patient privacy while fulfilling legal auditing mandates efficiently.
 
-**SoteLogGuardian AI** solves this by utilizing unsupervised machine learning to analyze the massive stream of log data in real-time. It automatically detects anomalous access patterns and flags high-risk incidents for Data Protection Officers (DPOs) to investigate.
 
-The idea is part of the Building AI course project.
+## Background
 
-<img width="321" height="491" alt="logevents" src="https://github.com/user-attachments/assets/9df5b192-1ab0-445f-a4e9-3eb334e58932" />
+Social and healthcare organizations are legally mandated to monitor system logs to ensure data privacy, but patient information systems generate thousands of rows of data every single second.
+* **Humanly Impossible Workload:** The sheer volume of log data makes manual auditing ineffective, forcing organizations to rely on random sampling.
+* **Low Detection Rate:** Due to limited human resources, insider threats and unauthorized "curiosity lookups" (e.g., viewing records of neighbors or celebrities) rarely get caught.
+* **Sensitive Data Exposure:** Patient records contain highly sensitive details, and unmonitored access severely undermines public trust in digital healthcare.
 
----
 
-##  Background
+## How is it used?
 
-### The Problem
-Patient records contain highly sensitive and confidential data. While legislation strictly forbids accessing records without a direct therapeutic or care relationship, current healthcare systems cannot natively prevent these actions at the user interface level. Security relies heavily on post-event log audits. Because the volume of data is humanly impossible to review, the probability of catching an insider threat or an unauthorized viewer is extremely low.
+LogGuardian AI operates as an independent backend analysis service running on log servers, meaning it does not directly modify or slow down the live patient information system. The direct users are Data Protection Officers (DPOs) who receive filtered, high-priority alerts on a dedicated security dashboard whenever an anomaly is detected.
 
-### Frequency & Impact
-This is a widespread and highly publicized issue. News reports frequently expose instances where nurses, doctors, or administrative staff have illegally accessed the data of public figures, neighbors, or acquaintances. This undermines public trust in digital healthcare systems and creates heavy administrative and legal burdens for social and healthcare (Sote) organizations when breaches are eventually exposed.
+The Mermaid diagram below visualizes the exact data components analyzed by the AI from each log event to determine legitimacy:
 
-### Personal Motivation
-The primary motivation behind this project is to protect patient privacy and safeguard fundamental digital rights. By automating a critical compliance requirement, this solution alleviates the immense manual audit workload currently exhausting healthcare security teams, while drastically increasing the detection rate of unethical behavior.
+```mermaid
+graph TD
+    Main["LOG ENTRY DATA CONTENT<br>(Lokimerkinnän tietosisältö)"] --> Cat1
+    Main --> Cat2
+    Main --> Cat3
+    Main --> Cat4
+    Main --> Cat5
+    Main --> Cat6
 
----
-## How It Is Used
+    Cat1["1. Log Event Data"]
+    Cat1 --> Sub1_1["• User Action / CRUD operation"]
+    Cat1 --> Sub1_2["• Event ID & Technical details"]
 
-### Context & Implementation
-LogGuardian AI is designed to run asynchronously on a dedicated log server—**it does not directly integrate into or modify the core patient information system's user interface.** This ensures that deployment does not cause downtime or interrupt critical medical software.
+    Cat2["2. Accessing System Data"]
+    Cat2 --> Sub2_1["• Software Name & Version"]
+    Cat2 --> Sub2_2["• Device / Workstation ID"]
 
-### Stakeholders & Viewpoints
-* **Data Protection Officers (DPOs):** The direct users of the tool. They receive a clean dashboard highlighting aggregated risk scores and a pre-filtered list of the most critical anomalies, allowing them to initiate official investigations or police reports swiftly.
-* **Healthcare Professionals:** Honest workers are protected from arbitrary random audits, while the presence of the system acts as a strong psychological deterrent for potential wrongdoers.
-* **Patients:** Benefit from the assurance that their sensitive personal data is actively and comprehensively protected by modern technology.
+    Cat3["3. Data Processor Credentials"]
+    Cat3 --> Sub3_1["• Professional Name & ID"]
+    Cat3 --> Sub3_2["• Job Title / Professional Role"]
 
----
+    Cat4["4. Patient / Client Identity"]
+    Cat4 --> Sub4_1["• Patient Full Name"]
+    Cat4 --> Sub4_2["• Personal Identity Code / ID"]
 
-## Data sources and AI Techniques
+    Cat5["5. Access Context Metadata"]
+    Cat5 --> Sub5_1["• Purpose of Use / Medical intent"]
+    Cat5 --> Sub5_2["• Care Relationship Verification"]
+    Cat5 --> Sub5_3["• Emergency Justification"]
 
-### AI Techniques
-* **Anomaly Detection (Unsupervised Learning):** Since malicious lookups are rare compared to legitimate daily operations, algorithms like **Isolation Forest** or **Autoencoders** are trained on historical logs to map "normal" clinical workflows. Any transaction that deviates significantly (e.g., viewing a profile outside shift hours, or a sudden spike in lookups of unrelated individuals) is flagged.
-* **Classification (Supervised Learning):** Once an organization accumulates historically verified breach data, classification models can be trained to recognize the specific behavioral signatures of "curiosity snooping."
-* **Graph Neural Networks (GNNs):** Used to identify hidden relationships and networks between employees and patients (e.g., identifying if an employee is looking up individuals living in their own neighborhood or sharing social circles).
+    Cat6["6. Accessed Data Component"]
+    Cat6 --> Sub6_1["• Registry / Document Type / View"]
+    Cat6 --> Sub6_2["• Unique Document Identifier"]
+    Cat6 --> Sub6_3["• Timeframe of accessed data"]
+    Cat6 --> Sub6_4["• Administrative Data Flag"]
 
-### 🛠️ Data Sources and AI methods
-The system operates as an independent backend analysis tool that ingests data from two primary sources:
-1. **System Log Stream:** Continuous transactional logs containing `Timestamp`, `User ID`, `Professional Role`, `Patient ID`, and `Action Executed`. Shift schedules, active appointment registries, and department mapping to verify whether a professional has a legitimate reason to be interacting with a specific patient's file at that given time.
+    style Main fill:#ffccff,stroke:#333,stroke-width:2px;
+    style Cat1 fill:#ddecff,stroke:#333,stroke-width:1px;
+    style Cat2 fill:#ddecff,stroke:#333,stroke-width:1px;
+    style Cat3 fill:#ddecff,stroke:#333,stroke-width:1px;
+    style Cat4 fill:#ddecff,stroke:#333,stroke-width:1px;
+    style Cat5 fill:#ddecff,stroke:#333,stroke-width:1px;
+    style Cat6 fill:#ddecff,stroke:#333,stroke-width:1px;
+```
 
----
+A simplified conceptual example of the backend anomaly filtering logic:
+
+```python
+def check_log_anomaly(log_event):
+    # Check if the user has an active shift and a registered appointment with the patient
+    if not log_event['has_active_shift']:
+        return "HIGH RISK: Access outside working hours"
+    
+    if not log_event['has_active_appointment'] and not log_event['emergency_override']:
+        return "MEDIUM RISK: No established care relationship detected"
+        
+    return "LOW RISK: Standard workflow"
+```
+
+
+## Data sources and AI methods
+
+The project depends on integrating real-time system logs with internal metadata catalogs to contextually evaluate each transaction.
+
+| Data Source | Description |
+| ----------- | ----------- |
+| **System Log Stream** | Continuous transactional rows containing Timestamp, User ID, Patient ID, and Action. |
+| **Contextual Metadata** | HR work schedules, hospital department mappings, and active patient appointment lists. |
+
+### AI Techniques:
+* **Unsupervised Anomaly Detection:** Algorithms like *Isolation Forests* or *Autoencoders* are trained on historical logs to learn normal clinical workflows and isolate unique, non-standard access behaviors.
+* **Supervised Classification:** Pattern recognition models trained on known, historically verified breach cases to identify the specific behavioral "fingerprint" of curiosity snooping.
+
 
 ## Challenges
 
-* **Reactive, Not Proactive:** Because this tool does not plug into the frontend of the patient information system, it cannot block a user from opening a file in real-time. It detects the violation minutes or hours after it occurs.
-* **False Positives:** Medical emergencies (e.g., a critical patient rushed into the ER) require immediate data access without prior appointments or established care relationships. The AI will likely flag this as an anomaly. Therefore, **human verification is always mandatory** before any disciplinary or legal action is taken.
+* **Reactive Nature:** Because this solution is not integrated directly into the frontend user interface, it cannot block a user from opening a file in real-time. It detects the violation minutes or hours after it occurs.
+* **False Positives:** Critical medical emergencies (e.g., a patient rushed into the ER) require immediate data access without prior appointments. The AI will flag these as anomalies, meaning **human-in-the-loop verification** by a DPO is always mandatory before taking legal action.
+* **Ethical Considerations:** The system must strictly handle employee tracking data in compliance with labor privacy laws, ensuring it is used purely for data protection auditing rather than general performance monitoring.
 
----
 
-## What next
+## What next?
 
-1. **Proactive Warnings:** As the AI model matures and achieves high accuracy, it could eventually be integrated directly into the patient information system interface. Instead of blocking access, it could trigger a real-time warning prompt when a high-risk lookup is attempted: *"Warning: No active care relationship detected. Please input your mandatory justification for viewing these records."*
-2. **Cross-Sector Scaling:** The core anomaly detection framework developed here can easily be cross-trained to protect sensitive logs in other highly regulated sectors, such as law enforcement, tax administration, and banking.
+The project could scale from a post-event analysis tool into a proactive prevention platform by developing real-time frontend APIs. Instead of blocking access during a suspected anomaly, it could trigger a real-time justification prompt directly within the patient software interface. Furthermore, the core anomaly detection matrix could be cross-trained to safeguard sensitive logs in other strictly regulated sectors, such as law enforcement, tax administration, and banking.
 
----
 
 ## Acknowledgments
 
-* **Inspiration:** This project is inspired by ongoing public discussions surrounding digital ethics, European GDPR enforcement, and the operational compliance challenges faced by the Nordic healthcare sector.
-* **Open Source Technologies:** Built using open-source data streaming and machine learning frameworks including **Apache Kafka** for high-throughput log ingestion and **Scikit-Learn / PyTorch** for anomaly detection modeling.
-# my-new-project
-Building AI course project
+* **Inspiration:** Inspired by public discussions surrounding European GDPR compliance challenges, patient privacy rights, and logging guidelines provided by the Finnish National Architecture for Digital Services.
+* **Open Source Technologies:** Built using conceptual frameworks from open-source machine learning libraries like Scikit-Learn and data streaming architectures like Apache Kafka.
